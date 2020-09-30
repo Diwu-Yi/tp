@@ -23,10 +23,10 @@ import seedu.address.model.tag.Tag;
 class JsonAdaptedPerson {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    public final Remark modelRemark = new Remark("");
     private final String name;
     private final String phone;
     private final String email;
-    final Remark modelRemark = new Remark("");
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -34,8 +34,8 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+                             @JsonProperty("email") String email,
+                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -92,7 +92,7 @@ class JsonAdaptedPerson {
         final Email modelEmail = new Email(email);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail,modelRemark, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelRemark, modelTags);
     }
 
 }
