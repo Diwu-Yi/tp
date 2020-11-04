@@ -825,35 +825,30 @@ Priorities: 1 (must have), 2 (nice to have), 3 (unlikely to have)
 **MSS**
 
 1. User chooses to set the ingredient level for an ingredient.
-2. tCheck requests for the name of the ingredient.
-3. User enters the name of the ingredient.
-4. tCheck requests for the amount of the particular ingredient.
-5. User enters the amount of the particular ingredient.
-6. tCheck will set the ingredient level for this ingredient and displays a success message.
+2. User enters the name of the ingredient and the amount he/she wants to set to.
+3. tCheck will set the ingredient level of this ingredient and displays a success message.
 
         Use case ends.
 
 **Extensions**
 
-* 3a. tCheck is unable to find the entered name.
+* 2a. tCheck is unable to find the entered ingredient name.
 
-  	    * 3a1. tCheck requests for the correct data.
-  	    
-  	    * 3a2. User enters new data.
-  	    
-        Steps 3a1-3a2 are repeated until the data entered are correct.
+  * 2a1. tCheck displays an error message informing the user that the ingredient name entered is not found in the pre-defined ingredient book.
         
-      	Use case resumes from step 4.
+  Use case ends.
       	
-* 5a. tCheck detects an invalid amount value
+* 2b. tCheck detects an invalid amount value entered.
 
-   	    * 5a1. tCheck requests for the correct data.
-   	    
-   	    * 5a2. User enters new data.
-   	    
-        Steps 5a1-5a2 are repeated until the data entered are correct.
-        
-       	Use case resumes from step 6.
+  * 2b1. tCheck displays an error message informing the user that the amount entered is invalid with corresponding reasons (e.g. negative number, contains decimal part etc).
+      
+  Use case ends.
+       	
+* 2c. tCheck detects missing field(s) in the command entered.
+
+  * 2c1. tCheck displays an error message informing the user that there are missing field(s) which caused the command to fail and shows an example of a correct command.
+  
+  Use case ends.
 
 **UC05 - Set sales level for all types of drinks**
 
@@ -938,6 +933,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
+       
 
 1. _{ more test cases …​ }_
 
@@ -957,7 +953,24 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
+### Setting an ingredient's level to a specified amount
 
+1. Setting an ingredient which is pre-defined in the ingredient book
+
+   1. Prerequisites: The ingredient must be found from the displayed Ingredient Tracker section of the GUI. i.e. The ingredient is pre-defined in the ingredient book.
+   
+   1. Test case: `i-set i/Milk m/99`<br>
+      Expected: (Given that the original amount for Milk is not 99 L) The amount for Milk is set to 99 L. Details of the new amount are shown in the success message in _Result Display_ section.
+      
+   1. Test case: `i-set i/milk m/99`<br>
+      Expected: The amount of Milk is unchanged. Error message of ingredient not found is shown in _Result Display_.
+      
+   1. Test case: `i-set i/Milk m/-99`<br>
+      Expected: The amount of Milk is unchanged. Error message of invalid amount is shown in _Result Display_.
+      
+   1. Other incorrect set commands to try: `i-set i/Milk m/1.2`, `i-set i/Milk m/1000`, `i-set i/Milk`<br>
+      Expected: The amount of milk is unchanged. Corresponding error messages are shown in _Result Display_.
+      
 ### Saving data
 
 1. Dealing with missing/corrupted data files
