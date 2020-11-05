@@ -16,7 +16,7 @@ This guide will help you to get started with tCheck, and provide useful tips alo
 * Table of Contents
     * [About this document](#about-this-document)
     * [Quick start](#quick-start)
-    * [About](#)
+    * [About](#about)
     * [Features](#features)
         * [Commands - Sales Tracking](#commands-sales-tracking) 
         * [Commands - Ingredients Tracking](#commands-ingredients-tracking)
@@ -69,13 +69,13 @@ not be so obvious!
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-## 3. About
+## 3. About <a name="about"></a>
 
 ### 3.1 Structure of this document
 
 We have structured this User Guide in a way so that you can find what you need easily and quickly. In the next section,
-[Section 3.2 - reading this document](), you can find sevaral useful tips on how to read this guide. The following section,
-[Section 4 - Features](), documents the four main features in **tCheck**, namely:
+[Section 3.2 - Reading this document](#reading-this-document), you can find sevaral useful tips on how to read this guide. The following section,
+[Section 4 - Features](#features), documents the four main features in **tCheck**, namely:
 
    * Sales Tracking
    
@@ -85,7 +85,7 @@ We have structured this User Guide in a way so that you can find what you need e
    
    * Other general features
    
-### 3.2 Reading this document 
+### 3.2 Reading this document <a name="reading-this-document"></a>
 
 This section introduces you to some key technical terms, symbols and syntax that are used throughout this guide. 
 You may want to familarize yourself with them before moving on to the next section.
@@ -94,6 +94,30 @@ You may want to familarize yourself with them before moving on to the next secti
 
 Figure 2 shows the GUI of **tCheck**, annotated with descriptions for all components of the GUI.
 
+<img src="images/tCheckInfographic.png" />
+Figure 2 - Annotated GUI of tCheck
+
+#### 3.2.4 Prefix process and usage
+
+The table below explains some important features of how prefix(es) are processed in tCheck to help you understand and use prefix(es) in commands.
+
+Situation | What will happen
+-------|------------------------------
+Duplicate (2 or more) valid prefixes detected | Only the last prefix and its following parameter are accepted and processed as part of the command.
+Invalid prefix entered | tCheck will not recognize this "prefix" and thus it will be processed as part of the parameter for the nearest previous valid prefix, which may result in error for the parameter.
+ 
+**Example 1:**
+`i-set i/Milk i/Boba m/90` 
+**How is the command processed:**
+In this case, the situation is duplicate valid prefixes detected. Hence, only the last, in this case, the second prefix and its following parameters are accepted.
+Thus, the command will be processed in the same way as `i-set i/Boba m/90`.
+
+**Example 2:**
+`i-set-all M/10 P/10 B/10 L/10 G/10 S/10 T/10`
+**How is the command processed:**
+In this example, the prefixes `M/`, `P/`, `B/`, `L`, `G` and `S/` are valid but `T/` is invalid. Hence, the situation is 
+invalid prefix entered. Since tCheck will not be able to recognize the `T/` entered as a prefix. Thus, it will be treated as 
+part of the parameter for the nearest previous prefix, which is `S/`. This will cause the command to fail because `10 T/20` is an invalid format for amount and appropriate error message will be shown.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Features <a name="features"></a>
@@ -103,7 +127,7 @@ Figure 2 shows the GUI of **tCheck**, annotated with descriptions for all compon
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `ingredient NAME`, `NAME` is a parameter which can be used as `ingredient milk`.
+  e.g. in `i-set i/INGREDIENT_NAME m/AMOUNT`, both `INGREDIENT_NAME` and `AMOUNT` are parameters which can be used as `i-set i/Milk m/90`.
 
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
@@ -191,8 +215,8 @@ Examples:
 **:information_source: Notes about ingredients:**<br>
 
 * Unit of measurement for ingredients:<br>
-    * - Unit for solid items / jelly (Pearl, Boba and Brown Sugar) : **KG**<br>
-    * - Unit for liquids (Milk, Black Tea and Green Tea) : **L**<br>
+   * - Unit for solid items / jelly (Pearl, Boba and Brown Sugar) : **KG**<br>
+   * - Unit for liquids (Milk, Black Tea and Green Tea) : **L**<br>
 
 * All ingredients' levels are set to 0.<br>
 
