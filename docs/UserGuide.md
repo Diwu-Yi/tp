@@ -16,6 +16,7 @@ This guide will help you to get started with tCheck, and provide useful tips alo
 * Table of Contents
     * [About this document](#about-this-document)
     * [Quick start](#quick-start)
+    * [About](#)
     * [Features](#features)
         * [Commands - Sales Tracking](#commands-sales-tracking) 
         * [Commands - Ingredients Tracking](#commands-ingredients-tracking)
@@ -68,7 +69,33 @@ not be so obvious!
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+## 3. About
 
+### 3.1 Structure of this document
+
+We have structured this User Guide in a way so that you can find what you need easily and quickly. In the next section,
+[Section 3.2 - reading this document](), you can find sevaral useful tips on how to read this guide. The following section,
+[Section 4 - Features](), documents the four main features in **tCheck**, namely:
+
+   * Sales Tracking
+   
+   * Ingredients Tracking
+   
+   * Employee Management 
+   
+   * Other general features
+   
+### 3.2 Reading this document 
+
+This section introduces you to some key technical terms, symbols and syntax that are used throughout this guide. 
+You may want to familarize yourself with them before moving on to the next section.
+
+#### 3.2.1 Terminology related to the GUI
+
+Figure 2 shows the GUI of **tCheck**, annotated with descriptions for all components of the GUI.
+
+
+--------------------------------------------------------------------------------------------------------------------
 ## Features <a name="features"></a>
 
 <div markdown="block" class="alert alert-info">
