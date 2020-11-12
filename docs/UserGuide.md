@@ -418,7 +418,7 @@ _Figure 7b. A screenshot showing the outcome of an `i-set-all` command_
 
 <div style="page-break-after: always;"></div>
 
-#### 2.3 Setting all ingredients to different levels : `i-set-default`
+#### 2.33 Setting all ingredients to different levels : `i-set-default`
 
 Sets all ingredients' levels to their pre-determined default levels for a store.
 
